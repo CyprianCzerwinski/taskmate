@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Taskmate</title>
+{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    </br>
+
+    {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          {{ message }}
+
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+    <form method=POST>
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="text" class="form-control" name="task" placeholder="New Task?">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+    </br>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Done</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+
+
+            <tbody>
+
+            {% if all_tasks %}
+              {% for obj in all_tasks %}
+                {% if obj.done %}
+
+                  <tr class="table-success">
+                    <td>{{ obj.task }}</td>
+                    <td>Completed</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                  </tr>
+                {% else %}
+
+                <tr>
+                  <td>{{ obj.task }}</td>
+                  <td>Not Completed</td>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                </tr>
+
+                {% endif %}
+            {% endfor %}
+          {% endif %}
+          </tbody>
+    </table>
+
+  </div>
+{% endblock content %}
