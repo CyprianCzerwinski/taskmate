@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load django_bootstrap_icons %}
+
 
 {% block title %}
   <title>Kontakt</title>
@@ -6,6 +8,12 @@
 
 {% block content %}
 <div class="container">
-  <h1>{{ contact_text }}</h1>
-</div>
-{% endblock content %}
+  <div class="row mt-5">
+    <div class="col md-10 offset-md-1">
+      <center><p>Contact Me!</p></center>
+    <center><a href="https://www.linkedin.com/in/cyprianczerwinski/"><button type="button" class="btn btn-primary btn-lg mt-3">{% bs_icon 'linkedin' %} Linkedin</button></a></center>
+
+
+    </div>
+  </div>
+</div>{% endblock content %}

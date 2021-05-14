@@ -1,4 +1,7 @@
 {% load static %}
+{% load django_bootstrap_icons %}
+
+{% include_bootstrap_icons %}
 
 <!doctype html>
 <html lang="en">
@@ -15,33 +18,59 @@
 
 {% endblock title %}
 
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+
+  }
+</style>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="{% static 'images/sexy.jpg' %}" width="119" height="120" alt="Taskmate"></a>
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/checklist-icon-red.png' %}" width="119" height="120" alt="Taskmate"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'todolist' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'todolist' %}">Todo List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+          <a class="nav-link" href="{% url 'contact' %}">Contact Me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About Us</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'portfolio' %}">Dev Diary</a>
+      </li>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'files' %}">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+    </li>
       </ul>
     </div>
+
   </div>
+  <span class="hello-msg">Hello, {{request.user}}</span>
+
 </nav>
 
-  </head>
-  <body>
+</head>
+
+
+  <body class="bg-light">
     {% block content %}
     {% endblock content %}
 

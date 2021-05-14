@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todolist_app',
     'rest_framework',
+    'django_bootstrap_icons'
 ]
 
 MIDDLEWARE = [
